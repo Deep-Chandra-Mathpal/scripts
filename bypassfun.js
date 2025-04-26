@@ -1,7 +1,3 @@
-// Coded on - Apr 2025
-// Author - Acemapper
-// For Education purposes only. I am not responsible if used for any malicious purposes
-
 EnsureElevatedPrivileges();
 
 function EnsureElevatedPrivileges() {
